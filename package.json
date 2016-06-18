@@ -1,7 +1,7 @@
 {
   "name": "mangony-hbs-helper-wrap-with",
   "version": "0.0.1",
-  "description": "Handlebars helpers used by Mangony",
+  "description": "Handlebars helper (wrapWith) used by Mangony",
   "main": "index.js",
   "scripts": {
     "test": "test"
