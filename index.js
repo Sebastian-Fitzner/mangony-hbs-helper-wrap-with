@@ -8,12 +8,32 @@ module.exports = {
 
 				var layout = options.data.root.__partials[name].parsed.content;
 				var content = options.fn(this);
+				var newContext = extend(this, {
+					yield: content,
+					options: options.hash
+				});
 				var template = handlebars.compile(layout);
 
-				this.options = options.hash;
-				this.yield = content;
-				return template(this);
+				return template(newContext);
 			}
 		);
 	}
 };
+
+/**
+ * Extend object with another object by using a copy.
+ *
+ * @param {Object} a - Object which will be copied and extended
+ * @param {Object} n - Object which will be applied
+ */
+function extend(a, b) {
+	var customContext = Object.assign({}, a);
+
+	for (var key in b) {
+		if (b.hasOwnProperty(key)) {
+			customContext[key] = b[key];
+		}
+	}
+
+	return customContext;
+}
