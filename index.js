@@ -8,7 +8,7 @@ module.exports = {
 
 				var layout = options.data.root.__partials[name].parsed.content;
 				var content = options.fn(this);
-				var newContext = extend(this, {
+				var newContext = extend(options.data.root, {
 					yield: content,
 					options: options.hash
 				});
