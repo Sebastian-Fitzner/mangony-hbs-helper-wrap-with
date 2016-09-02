@@ -12,7 +12,7 @@ module.exports = {
 					yield: content,
 					options: options.hash
 				});
-				var template = handlebars.compile(layout);
+				var template = handlebars.compile(layout, {preventIndent: true});
 
 				return template(newContext);
 			}
