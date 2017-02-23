@@ -6,13 +6,23 @@ module.exports = {
 					name = 'default';
 				}
 
-				var layout = options.data.root.__partials[name].parsed.content;
-				var content = options.fn(this);
-				var newContext = extend(options.data.root, {
+				let layout = handlebars.partials[name];
+
+				if (!layout) {
+					console.error(`Wrap-With-Helper :: Layout ${name} could not be found!`);
+					return;
+				}
+
+				let content = options.fn(this);
+				let newContext = extend(options.data.root, {
 					yield: content,
 					options: options.hash
 				});
-				var template = handlebars.compile(layout, {preventIndent: true});
+				let template = layout;
+
+				if (typeof layout !== 'function') {
+					template = handlebars.compile(layout, {preventIndent: true});
+				}
 
 				return template(newContext);
 			}
@@ -24,12 +34,12 @@ module.exports = {
  * Extend object with another object by using a copy.
  *
  * @param {Object} a - Object which will be copied and extended
- * @param {Object} n - Object which will be applied
+ * @param {Object} b - Object which will be applied
  */
 function extend(a, b) {
-	var customContext = Object.assign({}, a);
+	let customContext = Object.assign({}, a);
 
-	for (var key in b) {
+	for (let key in b) {
 		if (b.hasOwnProperty(key)) {
 			customContext[key] = b[key];
 		}
