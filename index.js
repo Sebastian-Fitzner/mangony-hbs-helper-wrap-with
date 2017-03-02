@@ -1,3 +1,5 @@
+'use strict';
+
 module.exports = {
 	register: function (handlebars) {
 		handlebars.registerHelper('wrapWith', function (name, options) {
