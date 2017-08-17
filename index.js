@@ -11,7 +11,7 @@ module.exports = {
 				let layout = handlebars.partials[name];
 
 				if (!layout) {
-					console.error(`Wrap-With-Helper :: Layout ${name} could not be found!`);
+					console.error('Wrap-With-Helper :: Layout ' + name + ' could not be found!');
 					return;
 				}
 
