@@ -18,7 +18,8 @@ module.exports = {
 				let content = options.fn(this);
 				let newContext = extend(options.data.root, {
 					yield: content,
-					options: options.hash
+					options: options.hash,
+					props: options.hash
 				});
 				let template = layout;
 

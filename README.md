@@ -33,7 +33,7 @@ helper.register(handlebars);
 #### `wrapWith` partial
 
 ```hbs
-<section class="section{{#if options.classes}} {{options.classes}}{{/if}}">
+<section class="section{{#if props.classes}} {{props.classes}}{{/if}}">
    {{{yield}}}
 </section>
 ```
